@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var query = require('../../mysql/mysqlPool.js');
 var getPublicInfo = require('../../controller/getPublicInfo')
+var upload = require('../../model/upload')
 //设置跨域请求头
 router.all('*', function(req, res, next) {
     //res.header("Access-Control-Allow-Origin", "*");
@@ -23,6 +24,12 @@ router.get("/timezone", function(req, res) {
 });
 router.get("/all_timezones", function(req, res) {
     res.send("Sample response for /all_timezones");
+});
+router.post("/register", function(req, res) {
+    console.log(Object.values(req));
+    console.log(req.baseUrl);
+    upload(req,res)
+    //res.send("Sample response for /all_timezones");
 });
 
 module.exports = router;
