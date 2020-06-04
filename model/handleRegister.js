@@ -12,9 +12,23 @@ module.exports = function (req, res) {
         console.log(fields);
         console.log('22222222====================');
         console.log(files);
-        files['avatar'][0]['size'] == 0 ? fields.jieimgUrl = null :
-            fields.jieimgUrl = baseUrl + '/static/img/' + path.basename(files['avatar'][0]['path'])
-        res.json(fields)
+        try {
+            files['avatar'][0]['size'] == 0 ? fields.avatar = null :
+                fields.avatar = baseUrl + '/static/img/' + path.basename(files['avatar'][0]['path'])
+            let newData = {};
+            for (item in fields) {
+                newData[item] = fields[item].toString()
+            }
+            let obj = {
+                code:200,
+                data:newData,
+                message:'请求成功'
+            }
+            res.json(obj)
+        } catch (error) {
+            console.log(error);
+        }
+
     });
 }
 
