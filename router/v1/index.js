@@ -11,7 +11,7 @@ router.all('*', function(req, res, next) {
     res.header("X-Powered-By",' 3.2.1')
     res.header("Access-control-max-age", 1000);
     res.header("Content-Type", "application/json;charset=utf-8");
-    res.header("Access-Control-Allow-Headers", "x-requested-with,Authorization,token, content-type"); //这里要加上content-type 
+    res.header("Access-Control-Allow-Headers", "x-requested-with,Authorization,token, content-type"); //这里要加上content-type  
     next();
 });
 
